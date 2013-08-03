@@ -1,0 +1,5 @@
+vendor
+tmp
+.bundle
+Guardfile
+Gemfile*
