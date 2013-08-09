@@ -41,8 +41,7 @@ describe Queue do
         expect(queue.more_than_20).to eq 1
       end
 
-      it 'with more than one booth' do
-        pending 'Falta implementar com mais de um caixa'
+      xit 'with more than one booth' do
         queue = Queue.new(3, 16)
         queue.line = [
           [ 0, 10],

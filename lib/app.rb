@@ -10,13 +10,13 @@ class Queue
   end
 
   def more_than_20
-    create_queues if @booth > 1
-    time_in_the_queue
+    create_queues
   end
 
-  private
+  protected
 
   def time_in_the_queue
+    #apenas calcular qnto tempo ele fica na fila
     count_time = 0
     behind = [0, 0, 0] 
     @line.to_enum.with_index do |client, c|
@@ -25,16 +25,19 @@ class Queue
         attendance += @line[j][1]
       end
       total_time = (attendance - client[0])
-      count_time += 1 if total_time > 20
-      behind = [client[0], client[1], total_time]
+      #count_time += 1 if total_time > 20
+      #behind = [client[0], client[1], total_time]
     end
-    count_time
+    #count_time
   end
 
   def create_queues
-    queues = Array.new(@booth)
-    @line.each do |arrive, duration|
-      
-    end
+    #montar a fila de acordo com o tempo do caixa
+    time_in_the_queue
   end
+
+  def throw_to_booth
+    # jogar o cliente no caixa q não tiver atendendo no momento
+  end
+
 end
